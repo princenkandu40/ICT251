@@ -1,0 +1,181 @@
+/* Base styles and dark theme palette */
+body {
+    background-color: #121824;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1e293b;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 3px solid #2563eb;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #ffffff;
+}
+
+header p {
+    margin-top: 0.5rem;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+nav a:hover, nav a:focus {
+    color: #f43f5e;
+    text-decoration: underline;
+}
+
+/* Main Section Layout */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Class Selector requirement for repeated sections */
+.content-section {
+    background-color: #1e293b;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}
+
+/* ID Selector for a unique section requirement */
+#contact {
+    border-left: 5px solid #2563eb;
+}
+
+h2 {
+    color: #38bdf8;
+    border-bottom: 2px solid #334155;
+    padding-bottom: 0.5rem;
+}
+
+/* Photo Gallery Layout */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.gallery-item {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 260px;
+}
+
+/* Responsive Image and Video rules */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item figcaption {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #cbd5e1;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #38bdf8;
+}
+
+th, td {
+    border: 1px solid #334155;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+/* Contact Form Styling */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+    background-color: #1d4ed8;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #0f172a;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}

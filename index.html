@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Nkandu - Personal Web Space</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>PRINCE NKANDU</h1>
+        <p>Student ID: 202506829</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#hobbies">My Hobbies</a>
+        <a href="#learning-plan">Learning Plan</a>
+        <a href="#photos">My Photos</a>
+        <a href="#media">My Media</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <!-- Section 1: About Me (at least 50 words) -->
+        <section id="about" class="content-section">
+            <h2>About Me</h2>
+            <p>
+                My name is Prince Nkandu, and I am currently in my second year pursuing a Bachelor of Information and Communication Technology. I have a deep passion for leveraging technology to share information, and I am excited to explore modern web technologies to build interactive digital platforms.            </p>
+        </section>
+
+        <!-- Section 2: Hobbies & Skill Growth -->
+        <section id="hobbies" class="content-section">
+            <h2>My Top Three Hobbies</h2>
+            <ul>
+                <li>Reading novels</li>
+                <li>Watching programming tutorials</li>
+                <li>Playing games</li>
+            </ul>
+
+            <h3>Steps to Improve My Web Skills</h3>
+            <ol>
+                <li>Practice HTML5 semantic tagging and modern layout design daily.</li>
+                <li>Master CSS Flexbox and Responsive Web Design techniques for mobile devices.</li>
+                <li>Build hands-on projects and publish them to GitHub to receive feedback.</li>
+            </ol>
+            
+            <p>
+                Learn more about modern web development at the 
+                <a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN Web Docs Learning Portal</a>.
+            </p>
+        </section>
+
+        <!-- Section 3: Learning Plan Data Table -->
+        <section id="learning-plan" class="content-section">
+            <h2>My Learning Plan</h2>
+            <table>
+                <caption>Weekly Web Technology Study Plan</caption>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Topic</th>
+                        <th>Practice Task</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>HTML5 Semantic Elements</td>
+                        <td>Refactor page structures using semantic tags</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>CSS Styling & Box Model</td>
+                        <td>Apply custom styling, padding, and flexbox styles</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>Multimedia & Forms</td>
+                        <td>Embed local video, audio, and standard HTML forms</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 4: Photo Gallery -->
+        <section id="photos" class="content-section">
+            <h2>My Photo Gallery</h2>
+            <div class="gallery">
+                <figure class="gallery-item">
+                    <img src="Images/Photo1.jpg" widith="200" >
+                    <figcaption><br> <br>
+                        MY PORTRAIT</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Images/file_000000001e448211a7f237d715beaa01.png" alt="Campus view in Mansa">
+
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Images/IMG_20250827_125818_691.jpg" >
+                    </figure>
+
+                <figure class="gallery-item">
+                    <img src="Images/PXL_20260428_132029538.PORTRAIT.jpg"
+                </figure>
+                    
+            </div>
+        </section>
+
+        <!-- Section 5: Audio & Video Media -->
+        <section id="media" class="content-section">
+            <h2>My Media</h2>
+            
+            <h3>Introduction</h3>
+            <video src="Videos/Intro.mp4" controls width="400">
+                Your browser does not support the video tag.
+            </video>
+            <p><strong>Video Transcript:</strong> Hi!, my name is Prince Nkandu. I am currently a second-year student studying Bachelor of Information and Communication Technology with Education at Mulungushi University.
+            I am interested in technology, especially programming and web development. In my free time, I enjoy playing games, reading novels, and watching programming tutorials. I am looking forward to learning new things and improving my coding skills. Thank you for visiting my website.</p>
+
+            <h3>Audio Recording</h3>
+            <audio src="Videos/Voice.mp3" controls>
+                Your browser does not support the audio element.
+            </audio>
+            <p><em>In this audio clip, I share why I chose to study ICT.</em></p>
+        </section>
+
+        <!-- Section 6: Contact Form -->
+        <section id="contact" class="content-section">
+            <h2>Contact Me</h2>
+            <p><em>Note: This form is a browser demonstration and does not submit data externally.</em></p>
+            
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="user-name">Full Name:</label>
+                    <input type="text" id="user-name" name="user-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-email">Email Address:</label>
+                    <input type="email" id="user-email" name="user-email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Subject Topic:</label>
+                    <select id="topic" name="topic">
+                        <option value="general">General Inquiry</option>
+                        <option value="feedback">Website Feedback</option>
+                        <option value="collaboration">Study Group Collaboration</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Prince Nkandu | 202506829</p>
+    </footer>
+
+</body>
+</html>
