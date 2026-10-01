@@ -28,15 +28,17 @@ header p {
 }
 
 /* Navigation bar */
+/* Navigation bar */
 nav {
-    background-color: #0f172a;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  background-color: #0f172a;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows links to wrap naturally on smaller screens */
+  gap: 1rem;       /* Slightly reduced gap to help links fit better */
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 nav a {
