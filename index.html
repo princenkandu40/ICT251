@@ -1,37 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="apLs3R-T5QvT5XziVzvJRdR7SHifjlbIvbAT5dK9OG4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prince Nkandu - Personal Web Space</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
     <header>
         <h1>PRINCE NKANDU</h1>
         <p>Student ID: 202506829</p>
+        <button id="theme-toggle-btn" class="btn-theme" aria-label="Toggle Theme">Toggle Light Theme</button>
     </header>
 
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#hobbies">My Hobbies</a>
-        <a href="#learning-plan">Learning Plan</a>
-        <a href="#photos">My Photos</a>
-        <a href="#media">My Media</a>
-        <a href="#contact">Contact</a>
+    <nav id="navbar">
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Navigation Menu">Menu ☰</button>
+        <div id="nav-links" class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills & Projects</a>
+            <a href="#hobbies">My Hobbies</a>
+            <a href="#learning-plan">Learning Plan</a>
+            <a href="#photos">Photo Gallery</a>
+            <a href="#media">My Media</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
     <main>
-        <!-- Section 1: About Me (at least 50 words) -->
+        <!-- Introductory Area -->
+        <section class="hero-section">
+            <h2>Welcome to My Digital Portfolio</h2>
+            <p>Second year student studying ICT with Education at Mulungushi University.</p>
+            <a href="#skills" class="cta-button">View My Projects & Skills</a>
+        </section>
+
+        <!-- Section 1: About Me -->
         <section id="about" class="content-section">
             <h2>About Me</h2>
             <p>
-                My name is Prince Nkandu, and I am currently in my second year pursuing a Bachelor of Information and Communication Technology. I have a deep passion for leveraging technology to share information, and I am excited to explore modern web technologies to build interactive digital platforms.            </p>
+                My name is Prince Nkandu, a second-year student studying Information and Communication Technology. I focus on modern web development, front-end architecture, and digital system design. My goal is to master HTML5, CSS3, JavaScript, and responsive design techniques to build fast, interactive, accessible web applications that streamline information sharing and digital learning.
+            </p>
         </section>
 
-        <!-- Section 2: Hobbies & Skill Growth -->
+        <!-- Section 2: Skills & Projects (Part B requirement) -->
+        <section id="skills" class="content-section">
+            <h2>Skills & Projects</h2>
+            <p>Here are three key areas of technical skills and course projects I have engaged in:</p>
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <h3>Web Development (HTML5 & CSS3)</h3>
+                    <p>Building responsive, accessible web interfaces using semantic tags, modern layouts (Flexbox/Grid), and customized stylesheets.</p>
+                </article>
+                <article class="skill-card">
+                    <h3>Java Programming & JavaFX</h3>
+                    <p>Developing user interfaces, implementing button event handlers, and managing package structures for desktop application exercises.</p>
+                </article>
+                <article class="skill-card">
+                    <h3>Boolean Algebra & Digital Logic</h3>
+                    <p>Analyzing and simplifying Boolean expressions, constructing truth tables, and proving logic gate equivalences.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 3: Hobbies & Skill Growth -->
         <section id="hobbies" class="content-section">
             <h2>My Top Three Hobbies</h2>
             <ul>
@@ -53,10 +86,10 @@
             </p>
         </section>
 
-        <!-- Section 3: Learning Plan Data Table -->
+        <!-- Section 4: Learning Plan Data Table -->
         <section id="learning-plan" class="content-section">
             <h2>My Learning Plan</h2>
-            <table>
+            <table class="data-table">
                 <caption>Weekly Web Technology Study Plan</caption>
                 <thead>
                     <tr>
@@ -85,85 +118,110 @@
             </table>
         </section>
 
-        <!-- Section 4: Photo Gallery -->
+        <!-- Section 5: Photo Gallery -->
         <section id="photos" class="content-section">
             <h2>My Photo Gallery</h2>
-            <div class="gallery">
-                <figure class="gallery-item">
-                    <img src="Images/Photo1.jpg" widith="200" >
-                    <figcaption><br> <br>
-                        MY PORTRAIT</figcaption>
+            <div class="gallery-viewer">
+                <figure class="gallery-display">
+                    <img id="gallery-img" src="Images/Photo1.jpg" alt="My Portrait">
+                    <figcaption id="gallery-caption">MY PORTRAIT</figcaption>
                 </figure>
-                <figure class="gallery-item">
-                    <img src="Images/file_000000001e448211a7f237d715beaa01.png" alt="Campus view in Mansa">
-
-                </figure>
-                <figure class="gallery-item">
-                    <img src="Images/IMG_20250827_125818_691.jpg" >
-                    </figure>
-
-                <figure class="gallery-item">
-                    <img src="Images/PXL_20260428_132029538.PORTRAIT.jpg"
-                </figure>
-                    
+                <div class="gallery-controls">
+                    <button id="prev-btn" class="btn-control">← Previous</button>
+                    <span id="gallery-counter">1 / 4</span>
+                    <button id="next-btn" class="btn-control">Next →</button>
+                    <button id="fullscreen-btn" class="btn-control btn-zoom">🔍 Full View</button>
+                </div>
             </div>
         </section>
 
-        <!-- Section 5: Audio & Video Media -->
+    <!-- Image Fullscreen Modal Overlay -->
+    <div id="image-modal" class="modal hidden">
+        <span id="close-modal" class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Enlarged view">
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
+
+        <!-- Section 6: Audio & Video Media -->
         <section id="media" class="content-section">
             <h2>My Media</h2>
             
-            <h3>Introduction</h3>
-            <video src="https://youtu.be/MPD-fI_KZWs" controls width="400">
-                Your browser does not support the video tag.
-            </video>
-            <p><strong>Video Transcript:</strong> Hi!, my name is Prince Nkandu. I am currently a second-year student studying Bachelor of Information and Communication Technology with Education at Mulungushi University.
-            I am interested in technology, especially programming and web development. In my free time, I enjoy playing games, reading novels, and watching programming tutorials. I am looking forward to learning new things and improving my coding skills. Thank you for visiting my website.</p>
+          <div class="media-item">
+    <h3>Video Introduction</h3>
+    <video src="Videos/Intro.mp4" controls width="400">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Download Button -->
+    <div class="media-download">
+        <a href="Videos/Intro.mp4" download="Prince_Nkandu_Intro.mp4" class="btn-download">
+            <br>
+            ⬇️ Download Video
+        </a>
+    </div>
+                <p><strong>Summary:</strong> My name is Prince Nkandu. I am a second-year ICT student at Mulungushi University. I like technology, programming, and web development. I also enjoy playing games. I want to learn more about technology and improve my coding skills.</p>
+            </div>
 
-            <h3>Audio Recording</h3>
-            <audio src="Videos/Voice.mp3" controls>
-                Your browser does not support the audio element.
-            </audio>
-            <p><em>In this audio clip, I share why I chose to study ICT.</em></p>
+            <div class="media-item">
+                <h3>Audio Recording</h3>
+                <audio src="Videos/Voice.mp3" controls>
+                    Your browser does not support the audio element.
+                </audio>
+                <p><em>In this audio clip, I share why I chose to study ICT.</em></p>
+            </div>
         </section>
 
-        <!-- Section 6: Contact Form -->
+        <!-- Section 7: Contact Form -->
         <section id="contact" class="content-section">
             <h2>Contact Me</h2>
-            <p><em>Note: This form is a browser demonstration and does not submit data externally.</em></p>
+            <p class="form-disclaimer"><em>Browser demonstration only — no message is sent externally.</em></p>
             
-            <form action="#" method="post">
+            <form id="contact-form" novalidate>
                 <div class="form-group">
                     <label for="user-name">Full Name:</label>
                     <input type="text" id="user-name" name="user-name" required>
+                    <span class="error-msg" id="name-error"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="user-email">Email Address:</label>
                     <input type="email" id="user-email" name="user-email" required>
+                    <span class="error-msg" id="email-error"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="topic">Subject Topic:</label>
                     <select id="topic" name="topic">
-                        <option value="general">General Inquiry</option>
-                        <option value="feedback">Website Feedback</option>
-                        <option value="collaboration">Study Group Collaboration</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Website Feedback">Website Feedback</option>
+                        <option value="Study Group Collaboration">Study Group Collaboration</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Your Message:</label>
                     <textarea id="message" name="message" rows="4" required></textarea>
+                    <span class="error-msg" id="message-error"></span>
                 </div>
 
-                <button type="submit">Send Message</button>
+                <button type="submit" class="submit-btn">Send Message</button>
             </form>
+
+            <!-- Form Validation Live Preview Output -->
+            <div id="form-preview" class="form-preview-box hidden" aria-live="polite">
+                <h3>Submission Preview</h3>
+                <p><strong>Status:</strong> Form data successfully validated locally!</p>
+                <p><strong>Name:</strong> <span id="preview-name"></span></p>
+                <p><strong>Email:</strong> <span id="preview-email"></span></p>
+                <p><strong>Topic:</strong> <span id="preview-topic"></span></p>
+                <p><strong>Message:</strong> <span id="preview-message"></span></p>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Prince Nkandu | 202506829</p>
+        <p>&copy; 2026 Prince Nkandu | Student ID: 202506829</p>
+        <p><a id="github-link" href="https://github.com/princenkandu40/ICT251" target="_blank" rel="noopener">View Source on GitHub</a></p>
     </footer>
 
 </body>
