@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   Feature 1 (Compulsory): Contact Form Validation & Local Preview
-   Validates fields against empty/whitespace inputs and valid email formats.
-   Displays live formatted feedback on successful validation without reload.
+   Feature 1 (Compulsory): Contact Form Validation & Formspree AJAX Submission
+   Validates fields against empty/whitespace inputs and valid email formats,
+   then submits asynchronously to Formspree upon successful validation.
    -------------------------------------------------------------------------- */
 function initFormValidation() {
     const form = document.getElementById('contact-form');
@@ -36,48 +36,89 @@ function initFormValidation() {
     // Standard email regex structure
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    form.addEventListener('submit', (event) => {
+    if (!form) return;
+
+    form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent page reload
 
         let isValid = true;
 
         // Reset error messages
-        nameError.textContent = '';
-        emailError.textContent = '';
-        messageError.textContent = '';
+        if (nameError) nameError.textContent = '';
+        if (emailError) emailError.textContent = '';
+        if (messageError) messageError.textContent = '';
 
         // Validate Full Name
         if (nameInput.value.trim() === '') {
-            nameError.textContent = 'Please enter your full name (cannot be blank).';
+            if (nameError) nameError.textContent = 'Please enter your full name (cannot be blank).';
             isValid = false;
         }
 
         // Validate Email Address
         if (!emailRegex.test(emailInput.value.trim())) {
-            emailError.textContent = 'Please enter a valid email address.';
+            if (emailError) emailError.textContent = 'Please enter a valid email address.';
             isValid = false;
         }
 
         // Validate Message
         if (messageInput.value.trim() === '') {
-            messageError.textContent = 'Please write a message before submitting.';
+            if (messageError) messageError.textContent = 'Please write a message before submitting.';
             isValid = false;
         }
 
         if (isValid) {
-            // Update preview elements safely using textContent
-            previewName.textContent = nameInput.value.trim();
-            previewEmail.textContent = emailInput.value.trim();
-            previewTopic.textContent = topicInput.value;
-            previewMessage.textContent = messageInput.value.trim();
+            // Optional: Update preview elements if you still want the preview box visible
+            if (previewBox && previewName && previewEmail && previewTopic && previewMessage) {
+                previewName.textContent = nameInput.value.trim();
+                previewEmail.textContent = emailInput.value.trim();
+                previewTopic.textContent = topicInput.value;
+                previewMessage.textContent = messageInput.value.trim();
+                previewBox.classList.remove('hidden');
+            }
 
-            // Reveal the preview box
-            previewBox.classList.remove('hidden');
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Message';
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+            }
 
-            // Reset form fields
-            form.reset();
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Replace form contents with a success message once successfully delivered
+                    form.innerHTML = `
+                        <div class="form-success-message">
+                            Thank you! Your message has been sent successfully.
+                        </div>
+                    `;
+                } else {
+                    const data = await response.json();
+                    alert(data.error || 'Oops! There was a problem submitting your form.');
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    }
+                }
+            } catch (error) {
+                alert('Network error. Please check your connection and try again.');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            }
         } else {
-            previewBox.classList.add('hidden');
+            if (previewBox) previewBox.classList.add('hidden');
         }
     });
 }
@@ -88,6 +129,8 @@ function initFormValidation() {
    -------------------------------------------------------------------------- */
 function initThemeSwitcher() {
     const themeBtn = document.getElementById('theme-toggle-btn');
+
+    if (!themeBtn) return;
 
     themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('light-theme');
@@ -127,18 +170,21 @@ function initPhotoGallery() {
     const modalCaption = document.getElementById('modal-caption');
     const closeModal = document.getElementById('close-modal');
 
+    if (!imgElement || !prevBtn || !nextBtn) return;
+
     function updateGallery(index) {
         imgElement.src = photos[index].src;
         imgElement.alt = photos[index].alt;
-        captionElement.textContent = photos[index].caption;
-        counterElement.textContent = `${index + 1} / ${photos.length}`;
+        if (captionElement) captionElement.textContent = photos[index].caption;
+        if (counterElement) counterElement.textContent = `${index + 1} / ${photos.length}`;
     }
 
     function openModal() {
+        if (!modal || !modalImg) return;
         modal.classList.remove('hidden');
         modalImg.src = photos[currentIndex].src;
         modalImg.alt = photos[currentIndex].alt;
-        modalCaption.textContent = photos[currentIndex].caption;
+        if (modalCaption) modalCaption.textContent = photos[currentIndex].caption;
     }
 
     prevBtn.addEventListener('click', () => {
@@ -152,14 +198,16 @@ function initPhotoGallery() {
     });
 
     // Open Full View when clicking the button or the image itself
-    fullscreenBtn.addEventListener('click', openModal);
+    if (fullscreenBtn) fullscreenBtn.addEventListener('click', openModal);
     imgElement.addEventListener('click', openModal);
 
     // Close Modal events
-    closeModal.addEventListener('click', () => modal.classList.add('hidden'));
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.add('hidden');
-    });
+    if (closeModal && modal) {
+        closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        });
+    }
 }
 
 /* --------------------------------------------------------------------------
